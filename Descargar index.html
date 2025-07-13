@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Malla Interactiva Medicina</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Malla Interactiva Medicina</h1>
+  <div class="malla">
+    <!-- AÑOS Y SEMESTRES SEPARADOS -->
+    <div class="anio" id="anio1">
+      <h2>1º Año</h2>
+      <div class="semestre">
+        <div class="materia" id="intro-bio" onclick="toggle(this)">Intro a la Biología</div>
+        <div class="materia" id="intro-bioest" onclick="toggle(this)">Bioestadística</div>
+        <div class="materia" id="salud-publica" onclick="toggle(this)">Salud Pública</div>
+        <div class="materia" id="territorio1" onclick="toggle(this)">Territorio 1</div>
+      </div>
+      <div class="semestre">
+        <div class="materia bloqueada" id="bio" data-prerrequisitos="intro-bio" onclick="toggle(this)">Biología Molecular</div>
+        <div class="materia bloqueada" id="territorio2" data-prerrequisitos="territorio1" onclick="toggle(this)">Territorio 2</div>
+      </div>
+    </div>
+
+    <div class="anio" id="anio2">
+      <h2>2º Año</h2>
+      <div class="semestre">
+        <div class="materia bloqueada" id="anatomia" data-prerrequisitos="salud-publica" onclick="toggle(this)">Anatomía</div>
+        <div class="materia bloqueada" id="histo-biofisica" data-prerrequisitos="bio" onclick="toggle(this)">Histo-Biofísica</div>
+      </div>
+      <div class="semestre">
+        <div class="materia bloqueada" id="histo-neuro" data-prerrequisitos="bio" onclick="toggle(this)">Histología (Neuro y Cardio)</div>
+        <div class="materia bloqueada" id="neuro" data-prerrequisitos="bio" onclick="toggle(this)">Neurociencias</div>
+        <div class="materia bloqueada" id="cardio" data-prerrequisitos="bio" onclick="toggle(this)">Cardiovascular y Respiratorio</div>
+      </div>
+    </div>
+
+    <div class="anio" id="anio3">
+      <h2>3º Año</h2>
+      <div class="semestre">
+        <div class="materia bloqueada" id="digestivo" data-prerrequisitos="anatomia" onclick="toggle(this)">Digestivo, Renal, Endócrino</div>
+      </div>
+      <div class="semestre">
+        <div class="materia bloqueada" id="hematologia" data-prerrequisitos="bio" onclick="toggle(this)">Hematología</div>
+        <div class="materia bloqueada" id="metodo1" data-prerrequisitos="intro-bioest" onclick="toggle(this)">Metodología Científica 1</div>
+      </div>
+    </div>
+
+    <div class="anio" id="anio4">
+      <h2>4º Año</h2>
+      <div class="semestre">
+        <div class="materia bloqueada" id="primer-nivel" data-prerrequisitos="hematologia,metodo1" onclick="toggle(this)">1º Nivel Atención</div>
+        <div class="materia bloqueada" id="bases" data-prerrequisitos="hematologia,metodo1" onclick="toggle(this)">Bases Científicas Patología</div>
+      </div>
+      <div class="semestre">
+        <div class="materia bloqueada" id="pediatria" data-prerrequisitos="bases" onclick="toggle(this)">Pediatría</div>
+        <div class="materia bloqueada" id="gineco" data-prerrequisitos="bases" onclick="toggle(this)">Ginecología y Neonatología</div>
+        <div class="materia bloqueada" id="metodo2" data-prerrequisitos="bases" onclick="toggle(this)">Metodología Científica 2</div>
+      </div>
+    </div>
+
+    <div class="anio" id="anio5">
+      <h2>5º Año</h2>
+      <div class="semestre">
+        <div class="materia bloqueada" id="clinica" data-prerrequisitos="pediatria,gineco" onclick="toggle(this)">Clínica Médica</div>
+        <div class="materia bloqueada" id="patologia-medica" data-prerrequisitos="pediatria,gineco" onclick="toggle(this)">Patología Médica</div>
+      </div>
+    </div>
+
+    <div class="anio" id="anio6">
+      <h2>6º Año</h2>
+      <div class="semestre">
+        <div class="materia bloqueada" id="clinica-quir" data-prerrequisitos="patologia-medica" onclick="toggle(this)">Clínica Quirúrgica</div>
+        <div class="materia bloqueada" id="patologia-quir" data-prerrequisitos="patologia-medica" onclick="toggle(this)">Patología Quirúrgica</div>
+        <div class="materia bloqueada" id="psico" data-prerrequisitos="patologia-medica" onclick="toggle(this)">Psicología Médica</div>
+      </div>
+      <div class="semestre">
+        <div class="materia bloqueada" id="internado" data-prerrequisitos="clinica-quir,patologia-quir,psico,metodo2" onclick="toggle(this)">Internado</div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
